@@ -23,6 +23,9 @@ class Post(models.Model):
         blank=True, null=True
     )
 
+    class Meta:
+        ordering = ("pub_date",)
+
     def __str__(self):
         return self.text[:15]
 
@@ -35,6 +38,9 @@ class Comment(models.Model):
     text = models.TextField()
     created = models.DateTimeField(
         'Дата добавления', auto_now_add=True, db_index=True)
+
+    class Meta:
+        ordering = ("created",)
 
 
 class Follow(models.Model):
